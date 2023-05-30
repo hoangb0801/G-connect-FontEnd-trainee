@@ -258,3 +258,140 @@ The cat was playing in the garden.
 <output>
 <option>
 <optgroup>
+
+# DAY 2: CSS
+
+1. Backgroud-color:
+
+- opacity: dùng để chỉnh độ mờ cho background
+
+* NOTE: khi sử dụng opacity: các thẻ con của nó cũng sẽ có cùng độ mờ
+
+- để khắc phụ điều trên ta sử dụng màu RGBA. chỉnh chỉnh độ mờ của màu backgroud
+
+2. Backgroud-image: dùng hình ảnh làm backgroud ( mặc định hình ảnh sẽ bị lặp lại để phủ kín backgroud)
+
+- backgroud-image:url("");
+- background-position: right top //Đặt vị trí bắt đầu của hình nền
+- background-repeat: no-repeat; //Đặt cách hình nền sẽ được lặp lại ( repeat-x , repeat-y)
+- background-attachment : scroll // hình nền sẽ cuộn theo trang hay nằm cố định ( sroll, fixed)
+
+3. inherit: giá trị này có nghĩa. sẽ được kế thừa từ phần tử cha
+4. Margins: dùng để tạo khoảng cách từ boder của element đến các elemnet xung quanh
+
+- margin= auto; // có thể dùng để căn giữa chiều ngang
+- Sự hợp nhất lề:( chỉ xẩy ra với lề trên và lề dưới) đôi khi giữ 2 elment có lề trên và lè dười có thể bị hợp nhất. Độ rộng tổng 2 lê bằng độ rộng lề lớn hơn
+
+5. Padding: là khoảng cách từ boder đến phần nội dung của element
+
+- khi thêm padding: ta sẽ làm tăng chiều rộng của cả element
+- để khắc phục điều này ta sử dụng thuộc tính:
+  box-sizing: border-box;
+
+6. height/width
+
+- height: chiều cao
+- width: chiều rộng
+- min-widht: chiều rộng tối thiểu
+- max-widht: chiều rộng tối đa
+
+7. một số đơn vị đo
+
+- auto: mặc định. Trình duyệt tự tính toán
+- lenght: px, cm, etc
+- %: bằng % khối chứa nó
+- initial: đặt làm giá trinh mặc định
+- inherit: kết thừa từ thẻ cha của nó
+
+8. OutLine: là 1 đường viền nằm bên ngoài boder:
+
+- làm cho phần tử nổi bật hơn
+- outline không làm thay đổi độ dày elemnt và layout của trang
+- outline có các thuộc thính giống boder
+- outline-offset= 2px // chỉnh khoảng cách của outline với boder
+
+9. TEXT
+
+- text-align: left/ right/ center/ justifed // căn chữ theo hướng nang
+- text-align-last: left/ right/ center/ justifed // chỉnh hướng dòng cuối văn bản
+- direction: rtl; // viết ngược lại chữ
+  unicode-bidi: bidi-override;
+- vertical-align: baseline; // căn chỉnh chữ them hướng dọc
+
+10. text-decoration:
+
+- dùng để tạo ra các chữ có gạch chân, gạch ngang, gạch trên
+- hoặc dùng để bỏ chữ có gạch chân cho thẻ a
+
+11. text-transform: uppercase/lowercase/ capitalize
+
+- sử dụng để chuyển chữ hoa, chữ thường, viết hoa chữ cái đầu của twungf twuf
+
+12. Spacing
+
+- text-indent:50px // thụt đầu dòng của đônạ văn
+- letter-spacing: 5px; // khoảng cách giữa các chữ cái
+- line-height: 0.8; // khoảng cách giữa các dòng
+- word-spacing: 10px; // khoảng cách giữa các từ
+- white-space: nowrap; // cách sử lý khoảng trắng bên trong 1 phần tử
+  13 Fonts: font chữ
+- font-family: Arial, Helvetica, sans-serif; // sử dụng font chữ. font chính, font dự phòng
+- font-style: normal/italic; // kiểu chữ thường/ chữ in nghiêng
+- font-weight: 400; // độ dày chữ
+- font-size: 10px // kích thước chữ
+
+* một vài kích thước chữ
+
+- px
+- em (1em=16px)
+- vh (1vh=1% chiều cao khung hình)
+- vw (1vw =1% chiều rộng khung hình)
+
+14. Link
+
+- 4 kiểu trạng thài của link
+
+* a:link - link bình thường, chưa được truy cập
+* a:visited - link đã được truy câp
+* a:hover - link khi được hover vào
+* a:active - link khi đang được click
+
+15. cuộn
+    overflow-x: auto // cuộn theo hướng ngang
+16. display:
+
+- visibility: hidden // phần tử sẽ bị ẩn đi nhưng vẫn chiếm chỗ
+
+17. sử dụng max-width kết hợp với magin: auto
+18. Position:
+19. z-index: chỉ sự nổi lên, nằm đè lên trên các phần tử khác
+
+- z-index: càng cao thì càng nổi lên trên
+- z-index: chỉ sử dụng được khi element có thuộc tính position, hoặc là các thẻ con trực tiếp của thẻ cha có display flex
+
+20. Overflow: chỉ định khi nội dung bị tràn khỏi khối. khi đó quyết định cắt bỏ hay gắn thêm thanh cuộn
+
+- visibale - Mặc định. Phần tràn không bị cắt bớt. Nội dung hiển thị bên ngoài hộp của phần tử
+- hidden - Phần tràn bị cắt bớt và phần còn lại của nội dung sẽ ẩn đi
+- scroll - Phần tràn được cắt bớt và một thanh cuộn được thêm vào để xem phần còn lại của nội dung
+- auto - Tương tự như cuộn, nhưng nó chỉ thêm thanh cuộn khi cần thiết
+
+21. Các cách căn giữa
+
+- theo chiều ngang
+- theo chiều dọc:
+  - sử dụng line-height bằng với chiều cao của khối
+  - nếu chiều cao không được tùy chọn thì sử dụng{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    }
+- sử dụng flex-box
+  22 Combinator: các cách chọn elemt
+  -Descendant Selector:
+  div p: chọn tất cả thẻ p nằm trong thẻ div
+  div>p: chọn tất cả thẻ p có thẻ cha là thẻ div
+  div+p: chọn thẻ p đứng ngay sau thẻ div
+  div~p: chọn tất cả thẻ p đứng sau thẻ div

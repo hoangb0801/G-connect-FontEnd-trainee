@@ -171,9 +171,9 @@
     <br>
     <form action="">
         <div class="sub">
-            <button>Thêm mới</button>
-            <button>Cập Nhật</button>
-            <button>Xóa</button>
+            <button type="submit">Thêm mới</button>
+            <button type="submit">Cập Nhật</button>
+            <button type="submit">Xóa</button>
         </div>
         <table>
             <tr>
@@ -182,7 +182,7 @@
                     <label for="txtbox" class="requemt">*</label>
                 </td>
                 <td>
-                    <input type="text" name="txtbox" id="txtbox">
+                    <input type="text" name="txtbox" id="txtbox" required>
                 </td>
             </tr>
             <tr>
@@ -191,7 +191,7 @@
                     <label for="txtTenSV" class="requemt">*</label>
                 </td>
                 <td>
-                    <input type="text" name="txtTenSV" id="txtTenSV">
+                    <input type="text" name="txtTenSV" id="txtTenSV" required>
                 </td>
             </tr>
             <tr>
@@ -219,7 +219,8 @@
                     <label for="drpKhoa" class="requemt">*</label>
                 </td>
                 <td>
-                    <select id="drpKhoa" name="drpKhoa">
+                    <select id="drpKhoa" name="drpKhoa" required>
+                    <option disabled selected value> --Chọn khoa đào tạo-- </option>
                     <option value="CNTT">CNTT</option>
                     <option value="ATTT">ATTT</option>
                     <option value="QTKD">QTKD</option>
