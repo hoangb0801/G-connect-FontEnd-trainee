@@ -389,9 +389,35 @@ The cat was playing in the garden.
     transform: translate(-50%, -50%);
     }
 - sử dụng flex-box
-  22 Combinator: các cách chọn elemt
-  -Descendant Selector:
-  div p: chọn tất cả thẻ p nằm trong thẻ div
-  div>p: chọn tất cả thẻ p có thẻ cha là thẻ div
-  div+p: chọn thẻ p đứng ngay sau thẻ div
-  div~p: chọn tất cả thẻ p đứng sau thẻ div
+
+22. Combinator: các cách chọn elemt
+    -Descendant Selector:
+    div p: chọn tất cả thẻ p nằm trong thẻ div
+    div>p: chọn tất cả thẻ p có thẻ cha là thẻ div
+    div+p: chọn thẻ p đứng ngay sau thẻ div
+    div~p: chọn tất cả thẻ p đứng sau thẻ div
+
+23. Pseudo-classes: các lớp giả
+    ::first-line: css vào dòng đầu tiên của văn bản.
+    ::first-letter: css chữ cái đầu tiên của văn bản
+    ::before : chèn một số nội dung trước nội dung của một phần tử.
+    ::after:chèn một số nội dung sau nội dung của một phần tử.
+    ::marker: css các điểm đánh dấu của các mục danh sách.
+    ::selection: css phần được người dùng chọn ( người dùng bôi đen)
+24. CSS Sprite: sử dụng 1 hình ảnh gồm nhiều ảnh khác nhằm giảm băng thông khi load trang
+25. Attribute selector:
+    là các chọn attibute trong element
+
+- [attribute] được sử dụng để chọn các phần tử có thuộc tính được chỉ định.
+- [attribute = “value”] được sử dụng để chọn các phần tử có thuộc tính và giá trị được chỉ định.
+- [attribute ~ = “value”] được sử dụng để chọn các phần tử có giá trị thuộc tính chứa một từ được chỉ định.
+- [attribute | = “value”] được sử dụng để chọn các phần tử có thuộc tính được chỉ định bắt đầu hoặc theo sau dấu- bằng giá trị được chỉ định.
+- [attribute ^ = “value”] được sử dụng để chọn các phần tử có giá trị thuộc tính bắt đầu bằng một giá trị được chỉ định.
+- [attribute$ = “value”] được sử dụng để chọn các phần tử có giá trị thuộc tính kết thúc bằng một giá trị được chỉ định.
+- [attribute * = “value”] được sử dụng để chọn các phần tử có giá trị thuộc tính chứa một giá trị được chỉ định.
+
+25. CSS Math Functions
+
+- calc() Cho phép thực hiện các phép tính để xác định giá trị thuộc tính CSS
+- max() Sử dụng giá trị lớn nhất, từ danh sách các giá trị được phân tách bằng dấu phẩy, làm giá trị thuộc tính
+- min() Sử dụng giá trị nhỏ nhất, từ danh sách các giá trị được phân tách bằng dấu phẩy, làm giá trị thuộc tính

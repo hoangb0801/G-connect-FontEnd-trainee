@@ -1,0 +1,45 @@
+.requemt{
+    color: red;
+}
+.listUser table {
+    border:1px solid black;
+    border-collapse: collapse;
+  }
+.listUser td {
+    border:1px solid black;
+    border-collapse: collapse;
+}
+.listUser th{
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  .boder-layout{
+    border: 2px solid red;
+    width: 900px;
+  }
+  .btn{
+    background-color: red;
+    color: white;
+  }
+  .seach-input{
+    width: 100%;
+    max-width: 800px;
+  }
+  table th{
+    background-color: red;
+    color: white;
+    
+  }
+  .label-color{
+    background-color: #DDE0E6;
+
+  }
+  .listUser{
+    min-height: 300px;
+  }
+  body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
