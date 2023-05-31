@@ -421,3 +421,140 @@ The cat was playing in the garden.
 - calc() Cho phép thực hiện các phép tính để xác định giá trị thuộc tính CSS
 - max() Sử dụng giá trị lớn nhất, từ danh sách các giá trị được phân tách bằng dấu phẩy, làm giá trị thuộc tính
 - min() Sử dụng giá trị nhỏ nhất, từ danh sách các giá trị được phân tách bằng dấu phẩy, làm giá trị thuộc tính
+
+# Day 3: JS
+
+1. Variables( biến)
+
+- có 4 cách để khai báo biến trong JS
+  - var: sử dụng và gán lại giá trị. có thể được gọi bên ngoài block chứa nó. có thể khai báo lại biến
+  - let: sử dụng và gán lại giá trị. không thể khai báo lại biến
+  - const: sử dụng như và không gán lại giá trị. không thể khai báo lại biến, không gọi được bên ngoài block của nó
+  - không dùng gì cả: không nên dùng cách này
+- khi khai báo mà không gán giá trị cho biến. biến sẽ có giá trị = unfefined
+- thông thường sẽ khai báo đối tượng với const
+
+2. từ khóa this
+
+- Trong phương thức của object. this trỏ đến object
+- đứng độc lập 1 mình, this trỏ đến object toàn cục
+- trong function, this trỏ đến object toàn cục
+- trong function, ở chế độ nghiêm ngặt, this không xác định
+- trong sự kiện, this trỏ đến element nhận sự kiện
+- các phương thức như call(), apply(), bind() , this trỏ đến any object
+- this không phải biến. this là 1 từ khóa. không thể thay đổi giá trị trong this
+
+3. events
+
+- events là bất cứ điều gì trình duyệt làm hoặc người dùng tác động dến
+
+* web page hoàn thành việc tải trang
+* một input field đã bị thay đổi
+* một button được click
+  => js sẽ thực thi 1 mã code khi phát hiện có sự kiện
+
+3. Object
+
+- 2 object khi so sánh bằng luôn luôn bằng false
+
+4.  String
+
+- let text="ABCSXS" // khai báo
+- text.length // độ dài
+
+5. các phương thức với string
+
+- kiểm tra độ dài
+  text.length;
+- Trích xuất nội dung chuỗi: có 3 cách
+  - slice(start, end) :
+    . trả về phần bị cắt thành 1 chuỗi mới
+    . khi thiếu tham số thứ 2. Sẽ cắt từ tham số thứ nhất đến hết
+    . khi tham số là số âm. sẽ tính từ cuối lên
+  - substring(start,end)
+    . tương tự như slice
+    . khi tham số là âm. sẽ được tính là 0
+  - substr(start,length)
+    . tương tự như slice
+- Thay thế giá trị trong chuỗi : Ứng dụng để thay thế hoặc loại bỏ từ trong chuỗi
+  - replace("txtold","txtnew")
+    . không làm thay đổi chuỗi cũ mà tạo ra một chuỗi mới
+    . chỉ thay đổi từ tìm thấy đầu tiên //text.replace(/MICROSOFT/g, "W3Schools"); thêm flag/g để thây thế tất cả các từ tìm thấy được
+    . phân biệt chữ hoa chữ thường //text.replace(/MICROSOFT/i, "W3Schools"); thêm flag/i để không phân biệt chữ hoa chữ thường
+  - replaceAll("txtold",""txtNew)
+    . giống replace
+    . thay đổi tất cả các từ thỏa mãn
+  - toUpperCase():trả về 1 chuỗi mới Viết hoa
+  - toLowerCase(): trả về 1 chuỗi mới viết thường
+- Nối chuỗi : ứng dụng để nối chuỗi hoặc chuyển mảng thành string
+  - text3=text1.concat("",text2) : trả về một chuỗi mới bằng cách nối 2 chuỗi với nhau
+- Loại bỏ khoảng trắng: có 3 cách
+  - trim(): loại bỏ khoảng trắng ở cả 2 đầu chuỗi
+  - trimStart(): loại bỏ khoảng trắng ở đầu chuỗi
+  - trimEnd(): loại bỏ khoảng trắng ở cuối chuỗi
+- Đệm chuỗi : ứng dụng để đệm số cho đủ độ dài bằng cách chuyển số thành string rồi đệm
+  - padStart(lenght,"literals") : đệm vào đầu chuỗi đến khi đạt được độ dài
+    text="5";
+    padd=text.padStart(4,"0") // 00005
+  - padEnd: tương tự nhưng đệm vào cuối
+- Trích suất các ký tự trong chuỗi: có 3 phương thức
+  - text.charAt(vị trí) // trả về 1 ký tự
+  - text[vị trí] // trả về 1 ký tự . Cách này khiên cho chuỗi nhìn giống vậy. Nhưng thực tế không phải vậy. Nó chỉ có thể đọc, không thể ghi đè
+- Chuyển chuỗi thành mảng
+  - sử dụng split()
+    text="Bùi,Minh Hoàng"
+    text.split(" ") //["Bùi,Minh","Hoàng"]
+    text.split(",") //["Bùi","Minh Hoàng"]
+    text.split("") // mảng gồm từng chữ cái
+- Search:
+  - tìm kiếm theo index
+    indexOf("text",0) // trả về vị trí đầu tiên xuất hiện của từ. đối số thứ 2 là vị trí bắt đầu tìm kiếm
+    lastIndexOf("text",5) // trả về vị trí cuối cùng xuất hiện của từ. Đối số thứ 2 tương tự
+  - tìm kiếm theo search()
+    search("text") // trả vè vị trí xuất hiện đầu tiên của từ. chấp nhận biểu thức chính quy
+  - tìm kiếm them match():
+    match("text") // trả về 1 mảng chưa 1 phần tử là text
+    match(/text/g) // trả về 1 mảng chứa tất cả các text xuát hiện trong chuỗi
+    matchAll("text")
+  - include("text"): //trả về true nếu trong chuỗi chứa giá trị được chỉ định, tham số thứ 2 là vị trí bắt đầu tìm kiếm
+  - startWith("text",0)// trả về true nếu giá trị đầu bắt đầu tìm kiếm là text, tham só thứ 2 là vị trí bắt đầu tìm kiếm
+    6 back-tics ` `
+- ` ` dùng để thay thế dấu "" khi sử dụng chuỗi
+- chuỗi trong dấu ` ` có thể sử dụng được nội suy ${}
+- Viết được nhiều dòng
+- Sử dụng đc biến thay thế
+  let name = "hoang"
+  let text =`xin chào ${name}`;
+- sử dụng được biểu thức
+  let a =10;
+  let b=5;
+  let tong=`total: ${a+b}`
+- HTML template
+  let header = "Templates Literals";
+  let tags = ["template literals", "javascript", "es6"];
+
+      let html = `<h2>${header}</h2><ul>`;
+      for (const x of tags) {
+        html += `<li>${x}</li>`;
+      }
+      html += `</ul>`;
+
+6. kiểu dữ liệu bigInt
+
+- kiểu dữ liệu number chỉ lưu được tối đa 15 chữ số
+- bigInt giải quyết vấn đề này
+- khởi tạo bằng cách thêm chữ n sau số
+- không thể thực hiện phép tính giữa bigInt và number
+- bigInt không chứa phần thập phân
+
+7. Phương thức Number
+
+- toString: trả về 1 số kiểu chuỗi
+- toFixed(2): trả về 1 chuỗi có giá trị bằng số được làm chòn
+- toPrecision(3): trả về 1 chuối với giá trị có độ dài xác định
+- valueOf(): chuyển số dưới dạng Object về dạng number
+  8.Array:
+- các phần tử của mảng có thể là number, string, Object
+- thêm 1 phần tử cho Array:
+- array.push("h") hoặc array[array.length]="h
+- chỉ mục của mảng không được đặt tên. chỉ được sử dụng só
