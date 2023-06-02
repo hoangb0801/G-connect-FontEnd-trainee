@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách sinh viên</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Danh sách sinh viên</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-    <form action="">
+    <form id="form-1" action="">
         <fieldset class="boder-layout">
             <legend>Tìm kiếm</legend>
-            <label class="seach-label label-color"for="txtTuKhoa">Từ khóa</label>
-            <input class="seach-input"type="text" id="txtTuKhoa" placeholder="Từ khóa cần tìm" id>
-            <button class="seach btn">Tìm kiếm</button>
+            <label class="seach-label label-color" for="txtTuKhoa">Từ khóa</label>
+            <input class="seach-input" type="text" id="txtTuKhoa" placeholder="Từ khóa cần tìm" value="">
+            <button class="seach btn" type="submit">Tìm kiếm</button>
         </fieldset>
     </form>
     <br>
     <div class="listUser ">
         <fieldset class="boder-layout">
             <legend>Danh sách sinh viên</legend>
-            <table  class="boder-layout">
+            <table class="boder-layout">
                 <thead>
                     <th></th>
                     <th>Mã sinh viên</th>
@@ -28,7 +33,8 @@
                     <th> Ngày sinh</th>
                     <th>Giới tính</th>
                     <th>Khoa</th>
-                    <th>Thao tác</th></thead>
+                    <th>Thao tác</th>
+                </thead>
                 <tbody class="table-contain">
                     <!-- <tr >
                         <td>
@@ -60,204 +66,76 @@
                     </tr> -->
 
                 </tbody>
-                    
-
-                
-                <!-- <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>HN03</td>
-                    <td>Nguyễn Văn B</td>
-                    <td>16/01/2000</td>
-                    <td>Nữ</td>
-                    <td>CNPM</td>
-                    <td>
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <i class="fa-solid fa-trash"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>HN05</td>
-                    <td>Nguyễn Thị C</td>
-                    <td>01/11/2000</td>
-                    <td>Nữ</td>
-                    <td>ATTT</td>
-                    <td>
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <i class="fa-solid fa-trash"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>HN29</td>
-                    <td>Trần Văn A</td>
-                    <td>11/01/2000</td>
-                    <td>Nam</td>
-                    <td>CNTT</td>
-                    <td>
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <i class="fa-solid fa-trash"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>VP88</td>
-                    <td>Văn Hương Mai</td>
-                    <td>31/01/2000</td>
-                    <td>Nữ</td>
-                    <td>CNTT</td>
-                    <td>
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <i class="fa-solid fa-trash"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>HN02</td>
-                    <td>Bùi Hoàng Bách</td>
-                    <td>28/07/2000</td>
-                    <td>Nam</td>
-                    <td>CNTT</td>
-                    <td>
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <i class="fa-solid fa-trash"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>HH01</td>
-                    <td>Nguyễn Trọng Nhân</td>
-                    <td>19/01/2002</td>
-                    <td>Nam</td>
-                    <td>CNTT</td>
-                    <td>
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <i class="fa-solid fa-trash"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>KH01</td>
-                    <td>Lê Hữu Thái</td>
-                    <td>01/05/2000</td>
-                    <td>Nam</td>
-                    <td>KT</td>
-                    <td>
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <i class="fa-solid fa-trash"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>HN09</td>
-                    <td>Văn Tiến Dũng</td>
-                    <td>22/01/2001</td>
-                    <td>Nam</td>
-                    <td>CNTT</td>
-                    <td>
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <i class="fa-solid fa-trash"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>HN08</td>
-                    <td>Nguyễn Văn M</td>
-                    <td>01/01/2000</td>
-                    <td>Nam</td>
-                    <td>CNTT</td>
-                    <td>
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <i class="fa-solid fa-trash"></i>
-                    </td>
-                </tr> -->
             </table>
         </fieldset>
     </div>
     <br>
     <br>
-    <form action="" class="edit-user">
+    <form id="form-2" action="" class="edit-user">
         <fieldset class="boder-layout">
-        <legend>Chỉnh sửa</legend>
-        <div class="sub">
-            <button type="submit" class="btn">Thêm mới</button>
-            <button type="submit" class="btn">Cập Nhật</button>
-            <button type="submit" class="btn">Xóa</button>
-        </div>
-        <table>
-            <tr>
-                <td class="label-color">
-                    <label for="txtbox">Mã SV</label>
-                    <label for="txtbox" class="requemt">*</label>
-                </td>
-                <td>
-                    <input type="text" name="txtbox" id="txtbox" required>
-                </td>
-            </tr>
-            <tr>
-                <td class="label-color">
-                    <label for="txtTenSV">Tên sinh viên</label>
-                    <label for="txtTenSV" class="requemt">*</label>
-                </td>
-                <td>
-                    <input type="text" name="txtTenSV" id="txtTenSV" required>
-                </td>
-            </tr>
-            <tr>
-                <td class="label-color">
-                    <label for="txtNgaySinh">Ngày Sinh</label>
-                </td>
-                <td>
-                    <input type="text" name="txtNgaySinh" id="txtNgaySinh">
-                </td>
-            </tr>
-            <tr>
-                <td class="label-color">
-                    <label for="Nam">Giới tính</label>
-                </td>
-                <td>
-                    <input type="radio" id="Nam" name="rdbGioiTinh" value="Nam" checked="checked" >
-                    <label for="Nam">Nam</label>
-                    <input type="radio" id="Nu" name="rdbGioiTinh" value="Nữ" >
-                    <label for="Nu">Nữ</label>
-                </td>
-            </tr>
-            <tr>
-                <td class="label-color">
-                    <label for="drpKhoa">Khoa</label>
-                    <label for="drpKhoa" class="requemt">*</label>
-                </td>
-                <td>
-                    <select id="drpKhoa" name="drpKhoa" required>
-                    <option disabled selected value> --Chọn khoa đào tạo-- </option>
-                    <option value="CNTT">CNTT</option>
-                    <option value="ATTT">ATTT</option>
-                    <option value="QTKD">QTKD</option>
-                    <option value="KT">KT</option>
-                    </select>
-                </td>
-            </tr>
-        </table>
+            <legend>Chỉnh sửa</legend>
+            <div class="sub">
+                <button type="submit" value="add" class="btn">Thêm mới</button>
+                <button type="submit" value="edit" class="btn">Cập Nhật</button>
+                <button type="button" onclick="deleteAllClick()" class="btn">Xóa</button>
+            </div>
+            <table>
+                <tr>
+                    <td class="label-color">
+                        <label for="txtMaSV">Mã SV</label>
+                        <label for="txtMaSV" class="requemt">*</label>
+                    </td>
+                    <td>
+                        <input type="text" name="txtMaSV" id="txtMaSV" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-color">
+                        <label for="txtTenSV">Tên sinh viên</label>
+                        <label for="txtTenSV" class="requemt">*</label>
+                    </td>
+                    <td>
+                        <input type="text" name="txtTenSV" id="txtTenSV" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-color">
+                        <label for="txtNgaySinh">Ngày Sinh</label>
+                    </td>
+                    <td>
+                        <input type="text" name="txtNgaySinh" id="txtNgaySinh">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-color">
+                        <label for="Nam">Giới tính</label>
+                    </td>
+                    <td>
+                        <input class="gioiTinh" type="radio" id="Nam" name="rdbGioiTinh" value="Nam" checked="checked">
+                        <label for="Nam">Nam</label>
+                        <input class="gioiTinh" type="radio" id="Nu" name="rdbGioiTinh" value="Nữ">
+                        <label for="Nu">Nữ</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-color">
+                        <label for="drpKhoa">Khoa</label>
+                        <label for="drpKhoa" class="requemt">*</label>
+                    </td>
+                    <td>
+                        <select id="drpKhoa" name="drpKhoa" required>
+                            <option disabled selected value> --Chọn khoa đào tạo-- </option>
+                            <option value="CNTT">CNTT</option>
+                            <option value="ATTT">ATTT</option>
+                            <option value="QTKD">QTKD</option>
+                            <option value="KT">KT</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
         </fieldset>
     </form>
     <script src="./myScript.js"></script>
 </body>
+
 </html>
