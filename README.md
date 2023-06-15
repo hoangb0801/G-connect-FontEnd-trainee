@@ -558,3 +558,520 @@ The cat was playing in the garden.
 - thêm 1 phần tử cho Array:
 - array.push("h") hoặc array[array.length]="h
 - chỉ mục của mảng không được đặt tên. chỉ được sử dụng só
+
+8. formatDate: su dung thu vien moment
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"</script> -->
+   function formatDate(inputDate) {
+   const newFormat = 'DD/MM/YYYY';
+   var outputDate = moment(inputDate).format(newFormat);
+   return outputDate;
+   }
+9. vòng lặp:( for, for in, for of)
+
+- for in: lặp quan các thuộc tính của một đối tượng. ( nên dùng for in đối với object) - cũng có thể lặp qua các chỉ số của 1 mảng ( không nên dùng vì có thể xẩy ra lỗi)
+  for (propotie in object){
+  //code
+  }
+- for of: lặp qua các giá trị của 1 đối tượng hoặc một mảng  
+   for (value in array){
+  // code
+  }
+
+10. it erables: giống nhưng mảng. interables: là các các đối tượng có thể lặp
+
+- nó đơn giản là 1 chuỗi các phần tủ liên tiếp nhau
+
+11. set là 1 collection các giá trị duy nhất
+
+- mỗi giá trị trong set chỉ có thể suất hiện 1 lần
+
+12. class:
+
+- class là khuôn mẫu để tạo ra đối tượng.
+- class luôn phải có contructor
+- tên class thường viết hoa chữ cái đầu
+- trong class có những thuộc thính và phương thức
+- Class kế thừa:
+- để tạo ra 1 class mới có các phương thức từ class trước đó
+- ta sử dụng từ khóa extends:
+  ex: class New extends Old{
+  contructor(para1, para2){
+  super(para1);
+  this.para2=para2
+  }
+  }
+- phương thức super() sẽ trỏ đến class cha
+- việc gọi super trong contructor. ta có thể gọi contructor của cha
+- lấy dữ liệu thuộc tính và phương thức của class cha
+
+- static class:
+- phương thức static được định nghĩa trong class của chính nó- có thể
+  coi static method là 1 object
+- bạn sẽ không thể gọi được phương thức này thông qua đối tượng được khỏi tạo bởi class
+- nếu bạn muốn sử dụng nó. bạn cần phải chuyền cho nó 1 tham số
+
+13. bieu thức chính quy là chuỗi các ký tự tạo thành mẫu tìm kiếm
+    cú pháp: /từ tìm kiếm/ công cụ tìm kiếm
+
+# Day 7: React
+
+-React là 1 thư viện JS để xây dựng giao diện người dùng
+
+- React sử dụng để xây dựng single-page-applications
+- React cho phép chúng ta tạo UI components có tính tái sử dụng
+
+1.  -React.creatElement(): sử dụng react để tạo ra các elment. Việc tạo elment bằng react sẽ ngắn gọn hơn tạo bằng DOM Document
+    note: bản thân React không kèm theo thành vân render ra UI. Vì vậy ta sử dụng thêm thư viện ReactDOM
+    let element= React.createElement(
+    "tagName",{props},child // Có thể sử dụng JSX để tạo React Element nhanh chóng và dễ dàng hơn
+    )
+
+- ReactDOM: dùng để render ra UI web từ React element
+  const root = ReactDOM.creatRoot(document.getElemnetById(""root"))
+  root.render(element)
+
+2. tạo mới bằng creat-react-app
+
+- npx create-react-app name
+- cd name
+- npm start
+
+## giới thiệu về JSX
+
+1. JSX là gì
+
+- JSX là là cú pháp thẻ gần giống như HTML nhưng đi kèm với bộ tính anwgcar JS
+
+2. Nhúng Biểu thức trong JSX
+
+- sử dụng biến trong JSX bằng cách bao quanh biến bằng dấu ngoặc nhọn
+  const name="hoang";
+  const element=<h1>hello: {name}</h1>;
+- hoặc có thể nhứng bất kỳ biển thức JS nào bên trong JSX bằng dấu ngoặc nhọn
+
+3. JSX là 1 biểu thức trong JS
+
+- Có thể sử dụng JSX bên trọng điều kiện if hoặc vòng lặp for
+
+4. Xác định thuộc tính của element bên trong JSX
+
+- dùng dấu nháy kép để khai báo thuộc tính của thẻ
+  const elment=<a href="https://....">link</a>
+- dùng biến biến hoặc biểu thức
+  const imgUrl="https://...."
+  const element= <a href={imgUrl}></a>
+  warning: ReactDOM sử dụng tên quy tắc cameCase. vì vậy
+  for=>HTMLFor
+  class=>className, tabindex=>tabIndex
+
+5. Thẻ con trong JSX
+
+- JSX có thể chứa thể con. Sử dụng dấu ngoặc tròn để bao quanh jsx
+const element = (
+  <div>
+    <h1>Hello!</h1>
+    <h2>Good to see you here.</h2>
+  </div>
+);
+
+6. JSX chỗng tấn công injection
+
+- ReactDOM loại bỏ những ký tự đặc biệt ở bất kỳ giá trị nào khi đc những vào JSX trước khi được render
+
+7. JSX là 1 object
+
+- babel biên dịc JSX thành những câu gọi hàm React.createElement();
+  ví dụ:
+  // JSX
+  const Ele= (
+  <h1 className="hihi">hello</h1>
+  )
+  // convert sang JS thuần với React.creacElement()
+  const Ele=React.creacElement(
+  "h1", //tagName
+  {className:"hihi"}, // atibute
+  "hihi" // children
+  )
+  // React.creatElemnt sẽ kiểm tra lỗi và tạo ra 1 đối tượng giống như dưới đây
+  const Ele=React.creacElement(
+  "h1",
+  props:{
+  className:"hihi",  
+   "hihi"
+  }
+  )
+- JSX không hỗ trợ câu lệnh if: thay vào đó có thể sủ dụng biểu thức bậc 3:
+
+{a<b ? đúng : sai}
+
+## Rendering Elememnts ( render các elemnet)
+
+1. Việc render các elemnets
+
+- Element là phần nhỏ nhát trong ứng dụng React
+- Elemt mô tả những gì bạn muốn thấy trên màn hình
+- React element khác với element DOM của trình duyệt. Nó là 1 đối tượng đơn giản.
+- ReactDOM sẽ cập nhật DOM để phù hợp với từng ReactElement
+  NOTE: element không phải là component. Mà Compomnents sẽ được tạo bởi nhiều elements
+- type trong react Element: string(tagName), funciton/class
+
+2. Reder một Elemnt vào trong DOM
+
+- ứng dụng xây dựng bằng React sẽ thường có duy nhất một Node DOM gốc và thường đặt id = root
+<div id="root"></div>
+- mọi thứ bên trong nó sẽ được quản lý bới ReactDOM
+- các elements mong muốn được hiển thị sẽ được render vào root
+- truyền ReactElements vào trong root bằng cách sử dụng phương thức ReactDOM.render()
+
+const root= ReactDOM.creatRoot( // tạo root ReactDOM
+document.getElementById("root")
+);
+const element= <h1>hihi</h1> // tạo element với JSX
+root.render(element) // truyền element vào trong root và reder ra màn hình 3. cập nhật Elemnet sau khi được render
+
+- các React Element là bất biến. khi đã tạo ra 1 Elememnts thì sẽ không thể thay đổi được Atribiute và children của nó.
+- Các duy nhất để cập nhật giao diện là tạo ra 1 elements mới rồi render lại
+
+4. React Chỉ Cập Nhật Những Gì Cần Thiết
+
+- khi render 1 element mới. React sẽ kiểm tra và chỉ cập nhật những gì mới
+
+### Components and Props
+
+1. khái niệm
+
+- Components cho phép chia UI thành nhiều phần độc lập. do đó có thể tái sử dụng.
+- components giống như các funcition trong JS. với đầu vào là Props và trả về các ReactElements dự kiến sẽ xuất hiện trên màn hình
+- tên Component phải được viết hoa chữ cái đầu
+
+2.  Các loại components ( funcition components and class Componets)
+
+- funcition component là 1 funcition trong JS:
+  funcition Welcome(props){
+  return <h1>hello : {props.name}</h1>
+  }
+- class component là một class kế thừa từ React.Components . render() ra elements cần hiển thị
+
+  class Welcome extends React.Compomnents {
+  reder(){
+  return <h1>hihi:{this.props.name}</h1>
+  }
+  }
+
+3. Rendering một Component
+
+- React elements không chỉ biểu diễn các DOM tags ( div, h1, a,p,..)
+  const element = <div></div>
+- Mà còn có thể biểu diễn các components do người dùng tự định nghĩa
+  const element = <Welcome name="hoàng"/>
+
+4. Prors: khi gặp một element biểu diễn component do người dùng tự định nghĩa. Nó sẽ truyền atribute và child dưới dạng 1 object. Object này gọi là props
+
+function Welcome(props) { // components do người dùng tự định nghĩa
+return <h1>Hello, {props.name}</h1>;
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+const element = <Welcome name="Sara" />; // component Welcome, tham số đầu vào props: { name:"Sara"}
+root.render(element);
+
+# NOTE: luôn đặt trên Components bắt đầu bằng chữ in hoa
+
+4. Tạo Components
+
+- các component có thể sử dụng lồng nhau. bằng cách gọi component khác ở phần return của component
+  function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+  }
+
+  function App() {
+  return (
+  <div>
+  <Welcome name="Sara" />
+  <Welcome name="Cahal" />
+  <Welcome name="Edite" />
+  </div>
+  );
+  }
+
+4. tách Componets
+
+- Nên tách các componet thành có componets nhỏ hơn
+- Nên đặt tên props dựa trên góc nhìn tổng quan nhiều trường hợp hơn là trên góc nhìn trong bài toán
+
+5. props chỉ dùng để get dữ liệu
+
+- khi định nghĩa 1 component thì không được phép thay đổi props của chính nó (pure)
+  5.1 props trong JSX
+
+* 2 các cách truyền props
+  <component  
+   props1="chuỗi"
+  props2={biểu thức} // biến, cộng trừ, toán tử 3 ngôi,..  
+   />
+* Rest/ Spread
+  Rest: lấy phần tử trong object rồi gán vào biến ...inputProps
+  Spread: rải từng phần tử trong biến ra
+
+## state và lifecycle
+
+NOTE:
+
+1. State
+
+- state là trạng thái của 1 cái gì đó( một biến, một đối tượng) trong một thời gian cụ thể
+- state là 1 đối tượng. nó cho phép reder lại component khi dữ liệu thay đổi
+
+2.
+
+# REACT Event
+
+- Giống như HTML DOM events: click,change,..
+
+1. thêm sự kiện vào React không đối số
+
+- sử dụng camelCase để viết tên sự kiện
+- tên sự kiện được đặt trong dấu ngoặc nhọn{}
+  funcition suLy(){
+  return 1;
+  }
+  <button onClick={suLy}>nhấn để sử lý</button>
+
+2. thêm sự kiên có truyền đối số
+   const shoot = (a) => {
+   alert(a);
+   }
+   return (
+   <button onClick={() => shoot("Goal!")}>Take the shot!</button>
+   );
+3. đối tượng event viết tắt là e
+
+- e trả về đối tượng event được kích hoạt sự kiện
+- e.type // kiểu sự kiện
+- e.target // đối tượng được bật sự kiện
+  function Football() {
+  const shoot = (a, b) => { // b= event . ở đây là đối tượng có sự kiện
+  alert(b.type);
+  }
+
+  return (
+  <button onClick={(event) => shoot("Goal!", event)}>Take the shot!</button>
+  );
+  }
+
+# FROM:
+
+- trong thực tế chúng ta tách form thành component. mỗi form lại sử dụng các phần tử input, checkox, radio khác nhau. do dó cũng có thế tách từ input, checkbox thành components
+- cách làm: khai báo 1 đối tượng form với các phương thức ( components) là các input,checkbox
+  const From={
+  function Input(){
+  return <input />
+  }
+  funciton CheckBox(){
+  return <input type="checkbox"/>
+  }
+  }
+  funciton App(){
+  return(
+  <>
+  <form.Input />
+  </>
+  )
+  }
+- cách tạo component linh động
+  funciton App(){
+  const type="input";
+  const Component= form[type]
+  return(
+  <>
+  <Component />
+  </>
+  )
+  }
+- Tạo Component button dùng cho 2 trường hợp
+
+# sử dụng toán tử logic
+
+- các toán tử logic như booleans, null, underfined sẽ không được render ra giao diện
+- kết hợp với boolen để render giao diện theo điều kiện
+
+funciton App(){
+let check=true;
+return
+(
+<>
+{check && <h1>hiển thị</h1>} // nếu check bằng false sẽ không render ra thẻ h1
+</>
+)
+}
+
+# HOOK (móc): là các medthod được viết sẵn bằng JS
+
+- gắn các menthod này vào các component=> nên gọi là hook
+
+1. chỉ dùng cho funcition components
+2. lifecycle:
+
+- từ khi components đc thêm vào dom. cho đến khi nó hoạt động, thay đổi dữ liệu, đến khi component bị gỡ khỏi dom
+  => nó đánh dấu các thời điểm
+  vd: khi componet đc thêm vào dom thì sẽ thường gọi Api tại thời điểm đó. khi component rời khỏi đom. thường clear interval, clear timeOut , removeEvenLittener để tránh rò rỉ bộ nhớ
+  . Trong class Componets. Cung cấp nhiều menthod trong hành trình lifecycal của nó.
+  - trong React gồm 3 giai đoạn chính của 1 Components:
+  * Mounting: là việc reder hoặc đặt Componnet vào trong DOM
+  * Updating
+  * Unmounting
+
+1. useState
+
+- state: là trạng thái của dữ liệu.
+- dữ liệu thay đổi=> giao diện thay đổi
+- Sử dụng khi. Dữ liệu đang được hiển thị trên màn hình. Khi dữ liệu được thay đổi thì giao diện tự động cập nhật
+
+b1: Import
+import {useState} from 'react';
+
+funcition Component(){
+const [state, getState]=useState(initState)
+}
+
+- sate: là biến sẽ thay đổi
+- setState(): set lại giá trị cho biến state
+- initState: giá trị khởi tạo của sate
+
+NOTE:
+
+- component sẽ được render lại sau khi setState
+- initState chỉ được sử dụng cho lần đầu
+- Set state với callBack:
+
+* Thực tê: SetState sẽ không set luôn giá trị cua state sau khi được gọi. Dẫn đến setState chỉ set lần set cuối. sau đó mới Render component
+* Sử dụng call back làm đối số cho setState:
+  setSate(state=>state+1)
+  => lúc này setState sẽ set luôn giá trị trả về của hàm callback cho setState
+
+- innitState với callback:
+
+* nguyên nhân: vì Khi sử dụng useState: mỗi khi giá trị thay đổi thì component đó sẽ được reder lại . Dẫn đến những giá trị state được khởi tạo chỉ được sử dụng lần đầu sẽ luôn được gọi lại. gây nặng hệ thống.
+  => Sử lý: viết hàm sử lý thành callback trong useState để chỉ chạy 1 lần
+
+- One-way binding: rằng buộc 1 chiều ( mặc định trong React):
+  vd: trong Form:
+  có 1 input ứng với 1 State . khi nhập vào input thì State tự động thay đổi
+- tow-way binding:rằng buộc 2 chiều. khi dữ liệu thay đổi ứng dụng cũng thay đổi theo
+
+2. useEffect
+   -sử dụng khi thực hiện các side effects: khi có tác động sảy ra dẫn dến dữ liệu bị thay đổi( call api, updateDOM, setState, sử lý DOM event, Removo event)
+
+- gồm 2 đối số, 3 trường hợp:
+  ->> Cả 3 trường hợp. callback luôn được gọi sau khi component mount
+
+* 1 useEffect(callback):
+
+- gọi call back mỗi khi component re-render
+- gọi callback sau khi component thêm elmemnt vào DOM.
+
+* 2 useEffect(callback,[])
+
+- chỉ gọi callback 1 lần sau khi component mount
+- thường được áp dụng khi gọi aip để hiển thị giao diện
+
+* 3 useEffect(callback,[des])
+
+- des là 1 biến
+- callback sẽ được gọi lại mỗi khi des thay đổi
+
+3. useEffect with DOM event
+
+- cách dùng:
+  useEffect(function(){
+  element.addEventListenner("click",myFunction)
+
+  return ()=>{ // clear up Function
+  element.removeEventListenner("click",myFuncition);
+  }
+  },[])
+
+- vấn đề: khi componet bi Unmount thi addEventListener vẫn sẽ lắng nghe component bị Unmount. khi copomnet được mount lại thì nó sẽ mount component mới. Event sẽ không lắng nghe cái mới mà vẫn lắng nghe cái cũ. gây ra tình trạng không rò rit bộ nhớ.
+- cách khách phục: remove event kho copmnet được mout ( clearup function)
+
+* clear up function sẽ luôn được gọi trước khi copmonent bị unmount
+* clear up function luôn được goi trước khi callback được gọi ( trừ lần gọi call back đầu tiên) (des thay đổi)
+
+4. useEffect with Set Time
+5. userEffect chat thơi gian thực
+6. useLayoutEffect:
+
+- dùng để khắc phục vấn đề của useEffect khi cập nhật lại state bên trong callback của useEffect
+- thứ tự thực hiện của useEffect:
+
+* 1. cập nhật lại State
+* 2. cập nhật lại DOM
+* 3. Render lại UI
+* 4. gọi cleanup nếu deps thay đổi
+* 5. gọi userEffect callback
+
+- thứ tự thực hiện của useLayOutEffect:
+
+* 1: cập nhật lại State
+* 2. cập nhật lại DOM
+* 3. ClearUp nếu Des thay đổi
+* 4. gọi callback
+* 5. render lại UI
+
+7. useRef()hook:
+
+- lưu các giá trị qua 1 tham chiếu(biến) bên ngoài
+- lý do sử dụng: khi 1 hàm được gọi lại. nó sẽ tạo ra 1 phạm vị mới hoàn toàn. Vì vậy các biến lưu giá trị ở phạm vi cũ sẽ không sử dụng dượcd
+- const ref= useRef(giá trị khoi tạo)
+- ref trả về một đối tượng có thuộc tính current bằng giá trị khởi tạo
+
+- ref còn hỗ trợ để lấy element bằng cách:
+const ref=useRef();
+
+  <h1 ref={ref}>
+8 phương thức memo(): đây là phương thức không phải hook
+
+* hook: chỉ dùng cho Function Component
+* HOC : dùng cho cả 2. Component bậc cao hơn
+* Render Prors: truyền 1 function quan props. trên thực tế truyền qua props child
+  => dùng để kế thừa logic. tránh lặp logic ở các component. thiết kế ra những hook. HOC, Render props. Viết mỗi cái chứa 1 tính năng cụ thủ. chứa cách dùng và ưng nhược điểm khác nhau
+
+- ghi nhớ: là một Higher order Component(HOC): ghi lại những Props của 1 component để quyết định xem có render lại component hay không. tránh render lại không cần thiết
+- cách dùng.: bao bên ngoài component con cần kiểm tra
+
+export defaul memo(component);
+
+- Trường hợp sủ dụng: sử dụng trong trường hợp. componet cha sử dụng nhiều component con. và độ phức tạp UI lớn thì nên dùng memo( ) cho tất cả các component con. để tránh render lại không cần thiết
+
+9. useCallBack(): sử dụng khi sử dụng cùng function memo(). để chuyền props với kiểu dữ liệu fun, obj, array. để tránh bị render không cần thiết
+
+- truyền tham trị: sao chép truyền giá trị vào vùng nhớ mới
+- chuyền tham chiếu: truyền địa chỉ ô nhớ
+
+- cách hoạt động. useCallback sẽ nhận được hàm . nhận được tham chiếu và lưu kết quả trả về ra bên ngoài phạm vi của hàm app. sau đó return lại tham chiếu cho hàm biến. vì vậy khi chuyền biến qua prop, chính là ta đang chuyền tham chiếu. Memo sẽ so sánh. thấy địa chỉ ô nhớ không thay đổi nên không re-Render lại
+  const handle= useCallback(()=>{
+
+},[des]) 10. useMemo(): hook
+
+- sử dụng để tránh lặp lại những đoạn code logic thừa
+- sử dụng tương tự useCallBack và useEffect
+
+10. useReducer: hook. Là 1 cách khác để giải quyết bài toán giống như Sate
+
+- Hau hết trường hợp dùng useSate : dùng cho các trường hợp state đơn giản như các kiểu dữ liệu đơn giản, các oject, array, không bị lồng nhau, số lượng state ở trong 1 component ít.
+- useReducer(): sử dụng cho các trường hợp state phức tạp hơn
+- có thể tách useReducer ra 1 file
+
+* 4 bước dùng( phân tích bài toán) :
+  1 init state : khởi tạo giá trị
+  2 action: up(stae+1) / down (state-1)
+  3 reducer:
+  4 dispatch: thuật ngữ kích hoạt 1 action
+
+11. useContex: dung de tao state golbal
+
+- giai quyet van de chuyen prop qua cac component trung gian
+- compA=>CompB=>CompC
+  1 tao context : ( tạo 1 phạm vị)
+  2 provider: truyền dữ liệu
+  3 Consumer: con nhận dư liệu từ cha
