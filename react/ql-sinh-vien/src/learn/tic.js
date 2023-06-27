@@ -121,7 +121,7 @@ function TicTacToe() {
             <div className="board" style={{ width: 500, height: 200 }}>
                 {board.map((row, rowIndex) => (
                     <div key={rowIndex} className="board-row">
-                        {row.map((_, colIndex) => renderSquare(rowIndex, colIndex))}
+                        {row.map((col, colIndex) => renderSquare(rowIndex, colIndex))}
                     </div>
                 ))}
             </div>

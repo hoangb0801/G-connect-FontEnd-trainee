@@ -1075,3 +1075,579 @@ export defaul memo(component);
   1 tao context : ( tạo 1 phạm vị)
   2 provider: truyền dữ liệu
   3 Consumer: con nhận dư liệu từ cha
+
+#### learn VueJs
+
+1. # 01
+
+- 1.1 Vue instance
+
+* tạo app
+  const app=Vue.createApp({}) // {}: khai báo các option:vd:template,data()..
+* mount app vào mơi muốn hiển thị app
+  app.mount(#content) // <div id=""content><div>
+* Template: là mẫu các dữ liệu muốn hiển thị kiểu chuỗi
+  ex: template:"<h1>hello: {{name}}</h1>"
+
+1. data(): hàm để trả ra dữ liệu dữ liệu mà mình muốn mount ra ứng dụng. khi dữ liệu thay đổi. View sẽ render lại. Chỉ có dữ liệu được khai báo trong data bị thay đổi thì view mới render lại
+   data(){
+   return{
+   name:"hoang",
+   date:""
+   };
+   };
+2. methods:{} : đối tượng methods chứa những hàm để sử lý sự kiện khi được kích hoạt. từ khóa This trỏ đến đối tượng chứa được kích hoạt sự kiện.
+   methods:{
+   onClick(){
+   this.name="mến"
+   this.date="2000-01-01"
+   }
+   }
+3. filter:{}: dùng để format lại giá trị trước ki hiển thị. Vd như format lại ngày tháng, giá tiền
+   filter:{
+   currency: (value){
+   var formater=....
+   return formter.format(value)
+   }
+   }
+
+khi dùng {{date|currency}} 4.
+
+4. sử dụng toán tử {{}} để truyền dữ liệu vào trong html
+
+- click event: vue cung cấp các drirectip
+  <button v-on:click=" name='men' " >changeName<button>
+  <button @click="name=onClick">changeName<button> // @=v-on:
+
+5. Sử dụng biểu thức JS:
+
+- sử dụng các toán tử + - /:
+  {{number+1}}
+- toán tử so sánh bậc 3:
+  {{ ok ? "yes" : "no" }}
+- string aliter
+  <input :id=`list-${id}`>
+- sử dụng biểu thức
+  {{if(ok){return message}}}
+
+22. diretives ( chỉ thị):
+
+- Một diretives trong vue được bắt đầu bằng v-. Là thuộc tính do vue cung cấp. áp dụng một hàng vi đặc biệt lên kết quả Dom được render ra
+
+1. v-text: truyền 1 đoạn text vào thẻ
+   # <div v-text="Xin chao ban"></div>
+   <div>
+       Xin chao ban
+   </div>
+2. v-html: truyền 1 đoạn HTML vào thẻ:
+
+- áp dụng. khi cúng ta lưu 1 biến với giá trị là các thẻ. sau đó muốn truyền biến để hiện ra các thẻ
+- {{}}: sẽ không thể in giá trị của biến ra được. vì các ký tự <>&"' sẽ được mã hóa
+  -> vì vậy chúng ta sử dụng v-html.
+- việc render Html động có thể dẫn đến các lỗ hổng XSS. vì vậy chỉ dụng với các trường đáng tin cậy. Không sử dụng cho các trường được người dùng cung cấp ( input )
+<div v-html="<p>Xin chao ban</p>"></div>
+sau khi được render ra 
+<div>
+    <p>Xin chao ban</p>
+</div>
+
+3. v-model: thường trong thẻ input để toway-binding.
+
+- khi chúng ta nhập vào ô input. thì tự động giá trị của ô input sẽ được gán cho biến
+  <input v-model="name">
+- 1 vài option của v-model
+
+* v-model.lazy: sẽ tự đồng bộ giá trị input với dữ liệu sau sự kiện kiện change của input
+* v-model.number: cast giá trị từ input nhập vào từ kiểu string sang kiểu số
+* v-model.tim: Tự động loại bỏ khoảng trắng trước và sau giá trị của input
+
+- Các thuộc tính như value, checked, selected trong các input của form sẽ bị bỏ qua. Vue coi các dữ liệu trong data là nguồn dữ liệu đáng tin cậy hơn
+
+4. v-bind: truyền giá trị cho thuộc tính của các element
+v-bind:<tên thuộc tính>="giá trị"
+viết tắt: v-bind:Style = :Style
+<h1 v-bind:Style="style">hello</h1>
+
+- tự động rằng buộc nhiều thuộc tính:
+data(){
+return{
+obObAtri:{
+id:"1",
+class:"wrap"
+}
+}
+}
+<div v-bind="obObAtri"><div>
+- boolean Atrribute: disabled
+- Calling functions: callfuncition. sẽ được gọi mỗi khi components cập nhật. vì vậy chúng k có side effects
+  <time :title="toTitleDate(date)":datetime="date">
+  {{ formatDate(date) }}
+  </time>
+
+5. v-on: kích hoạt các sự kiện( click, input,mousemove )
+   v-on:click="onClick" // onclick: hàm sử lý
+   viết tắt: v-on:Click = @click
+   function onclick(e){
+   consol.log(e.target)
+   }  
+   <btn @click="onclick">click</btn>
+   -Truyền tham số cho hàm sử lý sự kiện
+   function say(mess){
+   conslo.log(mess)
+   }
+   <btn @click="onclick("hihi")>click</btn>
+
+- truyền tham số event và tham số khác
+  function say(mess,event){
+  event.preventDefault()
+  conslo.log(mess)
+  }
+  <btn @click="onclick("hihi",$event)>click</btn>
+
+- Mốt số tùy chọn thay đổi sự kiện gốc(modifire). Các modifire cũng có thể lồng nhau (click.prevent.self. năng hàng vi mặc định của cả phần tử cha và chon của nó. click.self.prevent: ngăng hành vị mặc định của chính no)
+
+* v-on:click.once="click" // sự kiện
+  click chỉ sử dụng được 1 lần sau khi tải trang
+* v-prevent: hủy bỏ sự kiện mặc định tải lại trang
+* v-self: chỉ kích hoạt khi phần tử không phải là phần tử con
+
+6. Conditinal: là những điều kiện để render elemnet
+
+- v-if, v-else-if, v-else: điều kiện để elment đc hiển thị
+
+7. v-show: giống với v-if. khác ở chỗ. Tất cả các element đều được render ra. việc hiển thị hay không phụ thuộc và thuộc tính css display=none
+8. v-for: là derective dùng để lặp qua các phần tử của mảng. từ đó render ra các elemt
+
+- khi dùng nên bind thêm thuộc tính key
+<ul v-for="i in 10" :key="n">
+<li>{{n}}</li>
+</ul>
+
+9. v-cloak: dùng để hiển thị element trong 1 khoảng thời gian cố định. Ví dụ như khi vào trang web elment sẽ không hiển thị ngay mà sau 1 khoảng thời gian mới hiển thị. Nên sử dụng với css
+
+10. Event
+
+- v-on:
+  -short hand: @
+
+4. list
+   -v-for
+5. truyền atribute
+   -v-bind
+
+- truyền class: v-bind:class=""
+- truyền src : v-bind:src""
+
+6. dynamic class:
+
+- truyền dữ liệu vào trong các thuộc tính
+- vd: : class="{cart:isCarrt}" // nếu isCart == true thì class ==cart
+
+7. Computted proprety:
+
+- Tự động được gọi mỗi khi dữ liệu thay đổi
+- là 1 object, trả về dữ liệu
+- chỉnh sửa, tính toán dữ liệu trước khi hiển thị dữ liệu
+  vd: lọc ra dữ liệu các sản phẩm có giá nhỏ hơn 1000
+
+computed:{
+productsComputed(){
+return this.products.filter(pr=>pr<1000);
+}
+}
+
+- Computed cũng có thể set dữ liêu
+  computed: {
+  fullName: {
+  // getter
+  get() {
+  return this.firstName + ' ' + this.lastName
+  },
+  // setter
+  set(newValue) {
+  // Note: we are using destructuring assignment syntax here.
+  [this.firstName, this.lastName] = newValue.split(' ')
+  }
+  }
+  }
+
+8. vue file
+
+- file view:
+- template: chứa những HTML được mount ra
+- script: những hàm và phương thức sử lý js
+- style: viết css cho chính nó, cho componet con mà nó chứa, hoặc cho cả dự án
+- template ref: dùng để định ranh component hoặc các menthod của componet ở 1 nơi bên ngoài.
+
+9. template Ref: khi chung ta cos nhieu coponent. vì vậy cần định danh component để gọi component và các menthod của nó wor 1 nơi bên ngoài
+<h1 ref="hello">haha</h1>
+để truy cập vào ref:
+this.$ref.hello
+10. Refs: 
+- khi bạn sử dụng refs là sẽ quan sát giá trị. Nếu giá trị bị thay đổi thì sẽ tự động cập nhật lại DOM
+- refs nhận vào 1 đối số và trả về 1 object.
+- .value: để lấy giá trị object
+
+import {ref } from "vue"
+ const name= ref("hoang")
+ consolog(name.value)             // hoang
+
+10. Reactive: cũng giống như Refs: 
+- Reactive: chỉ nhận vào 1 đối tượng, khi muốn thay đổi đối tượng thì chỉ có thể thay dooird từng thuộc tính của nó
+10. setup(){ }: là 1 hook đặc biệt của Vue. nó chứa các biến và các funcition. cần phải return để sử dụng các biến và funciddos
+11. sủ dụng <script setup> để thay thế hàm setup()
+10. lifecycle hook: là vòng đời của đối tượng Vue
+
+- hàm lifecycle hook cung cấp 1 số hàm gọi. giúp người dùng thêm code của mình vào các giai đoạn cụ thể (stage) trong vòng đời của đối tượng
+  vd: hook created:(){} dùng để thực thi code sau khi đối tượng được tạo
+  new Vue({
+  data: {
+  a: 1
+  },
+  created: function () {
+  // `this` trỏ đến đối tượng Vue hiện hành
+  console.log('giá trị của a là ' + this.a)
+  }
+  })
+  // => "giá trị của a là 1"
+
+Các hook khác như mounted, updated, và destroyed cũng được gọi vào các giai đoạn khác nhau trong vòng đời của đối tượng. Tất cả các hook này đều được thực thi với ngữ cảnh this trỏ đến đối tượng Vue hiện hành.
+Warning: không sử dụng arrow funcition cho các tùy chọn call back vì như vậy this sẽ không trỏ tới đối tượng Vue mà trỏ tới đối tượng con gây lỗi
+
+# 1 Cú pháp Template
+
+1.(hạn chế truy cập toàn cục) Restricted Globals Access 2. dynamic agruments: đối số động
+data(){
+return{
+namAtribute="click"
+nameUrl="src"
+}
+}
+<a v-bind:[nameUrl]="url">hihi</a>
+<a @[nameAtribute]="onclick">hihi</a>
+// bên dưới không hợp lệ
+<a :['foo' + bar]="value"> ... </a>
+
+# 3: class and style bindings
+
+1 bindings class
+
+- truyền 1 object vào vào v-bind:class để bật tắt class 1 cách linh hoạt
+<div v-bind:class="{ active: isActive }"></div>
+giải thích: class active sẽ được áp dụng nếu isActive là true
+- v-bind:class và atribuite class thông thường có thể dùng gộp với nhau
+- ta có thể bật tắt nhiều class bằng cách dùng nhiều trường trong object
+
+<div class="static"
+     v-bind:class="{ active: isActive, 'text-danger': hasError }">
+</div>
+
+data() {
+return{
+isActive: true,
+hasError: false
+}
+}
+
+nếu biến hasError có giá trị là true thì sẽ render thành
+
+<div  class="static active text-danger">
+
+- ta cũng có thể khai object rồi truyền object vào attribute
+  <div class="static"
+       v-bind:class="{ classNew }">
+  </div>
+  data() {
+  return{
+    classNews:{
+      active: true,
+      'text-danger':: false
+  }
+}
+}
+-Chúng ta cũng có thể bind vào một computed property (thuộc tính được tính toán) trả về một object. Dưới đây là một ví dụ điển hình cho kĩ thuật này:
+<div :class="classObject"></div>
+data() {
+  return {
+    isActive: true,
+    error: null
+  }
+},
+computed: {
+  classObject() {
+    return {
+      active: this.isActive && !this.error,
+      'text-danger': this.error && this.error.type === 'fatal'
+    }
+  }
+}
+
+2. bindings Style
+:style: hỗ trợ chèn trực tiếp css vào trong Html
+<div v-bind:style="styleObject"></div>
+data() {
+  return {
+    styleObject: {
+      color: 'red',
+      fontSize: '13px'
+    }
+  }
+}
+#4 conditinal reder: render theo đk
+-v-if, v-if-else, v-else,
+
+- v-if on <template>: ta sử dụng v-if trong thẻ template khi muốn bật tắt 1 khối HTML
+<template v-if="ok">
+  <h1>Title</h1>
+  <p>Paragraph 1</p>
+  <p>Paragraph 2</p>
+</template>
+#5. list Rendering
+- v-for để render mảng phần tử hoặc duyệt qua các phần tử của object
+
+1. v-for with array: duyệt qua các phần tử của mảng
+   data() {
+   return {
+   parentMessage: 'Parent',
+   items: [{ message: 'Foo' }, { message: 'Bar' }]
+   }
+   }
+
+<li v-for="(item, index) in items">
+  {{ parentMessage }} - {{ index }} - {{ item.message }}
+</li>
+2. v-for with object ( luôn phải thêm key) : duyệt qua đối tượng 
+<div v-for="item in items" :key="item.id">
+  <!-- content -->
+</div>
+
+<template v-for="todo in todos" :key="todo.name">
+  <li>{{ todo.name }}</li>
+</template>
+3 phát hiện thay đổi trong mảng
+- khi gọi các phương thức này thì View cũng sẽ tự động được cập nhật
+- push()
+- pop()
+- shift()
+- unshift()
+- splice()
+- sort()
+- reverse()
+4. thay thế mảng: filter(), concat() and slice()
+this.items = this.items.filter((item) => item.message.match(/Foo/))
+5. lọc và sắp xếp mảng
+- mảng đơn
+data() {
+  return {
+    numbers: [1, 2, 3, 4, 5]
+  }
+},
+computed: {
+  evenNumbers() {
+    return this.numbers.filter(n => n % 2 === 0)
+  }
+}
+<li v-for="n in evenNumbers">{{ n }}</li>
+- mảng lồng nhau
+data() {
+  return {
+    sets: [[ 1, 2, 3, 4, 5 ], [6, 7, 8, 9, 10]]
+  }
+},
+methods: {
+  even(numbers) {
+    return numbers.filter(number => number % 2 === 0)
+  }
+}
+<ul v-for="numbers in sets">
+  <li v-for="n in even(numbers)">{{ n }}</li>
+</ul>
+
+- chú ý khi dùng reverse() và sort(). 2 hàm này có thể làm thay đổi mảng gốc . vì vậy nên coppy sang mảng khác
+
+* return [...numbers].reverse()
+
+# 9 Form input Binding
+
+1. Text
+<p>Message is: {{ message }}</p>
+<input v-model="message" placeholder="edit me" />
+
+2. Text arier
+<span>Multiline message is:</span>
+<p style="white-space: pre-line;">{{ message }}</p>
+<textarea v-model="message" placeholder="add multiple lines"></textarea>
+
+3. check box:
+
+- một check box
+  <input type="checkbox" id="checkbox" v-model="checked" />
+  <label for="checkbox">{{ checked }}</label>
+- nhiều check box: thay vì dùng 1 biến, ta sẽ dùng 1 mảng
+// mảng checkedNames để lưu mảng
+export default {
+data() {
+return {
+checkedNames: []
+}
+}
+}
+<div>Checked names: {{ checkedNames }}</div>
+
+<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+<label for="jack">Jack</label>
+
+<input type="checkbox" id="john" value="John" v-model="checkedNames">
+<label for="john">John</label>
+
+<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+<label for="mike">Mike</label>
+4. radio
+<div>Picked: {{ picked }}</div>
+
+<input type="radio" id="one" value="One" v-model="picked" />
+<label for="one">One</label>
+
+<input type="radio" id="two" value="Two" v-model="picked" />
+<label for="two">Two</label>
+5. select
+- chọn 1
+<div>Picked: {{ picked }}</div>
+
+<input type="radio" id="one" value="One" v-model="picked" />
+<label for="one">One</label>
+
+<input type="radio" id="two" value="Two" v-model="picked" />
+<label for="two">Two</label>
+
+- chọn nhiều
+<div>Selected: {{ selected }}</div>
+
+<select v-model="selected" multiple>
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
+</select>
+
+# Watch(): giống như effect trong react
+- watch(des,callback()): khi des thay đổi thì sẽ thực hiện hàm callback
+
+Component
+
+1 components
+import ChildComp from './ChildComp.vue'
+<ChildComp/>
+
+
+2 props: truyền dữ liệu từ cha sang con
+parent------------------------------------------------------
+<script setup>
+import { ref } from 'vue'
+import ChildComp from './ChildComp.vue'
+
+const greeting = ref('Hello from parent')
+</script>
+
+<template>
+  <ChildComp :msg="greeting" />
+</template>
+childComp------------------------------------------------------
+<script setup>
+const props = defineProps({
+  msg: String
+})
+</script>
+
+<template>
+  <h2>{{ msg || 'No props passed yet' }}</h2>
+</template>
+
+
+3 emit: truyền dữ liệu từ con sang cha
+children-----------------------------------------
+<script setup>
+const emit = defineEmits(['response'])
+
+emit('response', 'hello from child')
+</script>
+
+<template>
+  <h2>Child component</h2>
+</template>
+
+
+parent-----------------------------------------------
+<script setup>
+import { ref } from 'vue'
+import ChildComp from './ChildComp.vue'
+
+const childMsg = ref('No child msg yet')
+</script>
+
+<template>
+  <ChildComp @response="(msg) => childMsg = msg" />
+  <p>{{ childMsg }}</p>
+</template>
+4 Slot: Giống như props chilren trong react
+- ngoài truyền dữ liệu qua prop
+- thì thẻ cha có thể truyền các template fragments cho thẻ con:
+parent---------------------------------------------
+<ChildComp>nội dung truyền xuống</ChildComp>
+children--------------------------------------------------
+<slot/>        // dùng thẻ <slot/> để nhận những gì thể cha truyền xuống
+<slot>Nội dung dự phòng khi thẻ cha không truyền gì</slot>
+5 provide(), injection: là truyền dữ liệu từ cha đến con cháu bất kỳ mà không phải truyền 1 cách lần lượt
+-parent componets:
+<script setup>
+import { provide } from 'vue'
+
+provide(/* key */ 'message', /* value */ 'hello!')
+</script
+- child componet:
+<script setup>
+import { inject } from 'vue'
+
+const message = inject('message')
+</script>
+
+- cách truyền hàm:
+<!-- inside provider component -->
+<script setup>
+import { provide, ref } from 'vue'
+
+const location = ref('North Pole')
+
+function updateLocation() {
+  location.value = 'South Pole'
+}
+
+provide('location', {
+  location,
+  updateLocation
+})
+</script>
+<!-- in injector component -->
+<script setup>
+import { inject } from 'vue'
+
+const { location, updateLocation } = inject('location')
+</script>
+
+<template>
+  <button @click="updateLocation">{{ location }}</button>
+</template>
+
+6. telepost components
+- giúp render 1 tempalate ra nơi bất kỳ 
+- ví dụ: khi cần hiển thị dialog: việc dịch chuyển dialog ra bên ngoài sẽ tránh được các nguy cơ  như:
++ bố cục giao diện bị thay đổi
++ thuộc tính z-index bị sai
+
+<button @click="open = true">Open Modal</button>
+
+<Teleport to="body">
+  <div v-if="open" class="modal">
+    <p>Hello from the modal!</p>
+    <button @click="open = false">Close</button>
+  </div>
+</Teleport>
